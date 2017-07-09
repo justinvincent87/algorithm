@@ -28,16 +28,17 @@ public class LongestSubstring {
 
 	public int lengthOfLongestSubstring(final String s) {
 		int n = s.length();
-		int ans = 0;
+		int length = 0;
         Map<Character, Integer> charMap = new HashMap<>();
         for (int j = 0, i = 0; j < n; j++) {
-            if (charMap.containsKey(s.charAt(j))) {
-                i = Math.max(charMap.get(s.charAt(j)), i);
+            char currChar = s.charAt(j);
+			if (charMap.containsKey(currChar)) {
+                i = Math.max(charMap.get(currChar), i);
             }
-            ans = Math.max(ans, j - i + 1);
-            charMap.put(s.charAt(j), j + 1);
+            length = Math.max(length, j - i + 1);
+            charMap.put(currChar, j + 1);
         }
-        return ans;
+        return length;
     }
 
 	@Test
